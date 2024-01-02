@@ -26,15 +26,19 @@ sourceCompatibility = 1.8 // java version 선언
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 // 프로젝트 개발에 필요한 의존성들을 선언하는 곳 //특정 버전을 명시하지 않아야만 맨 위에 작성한 버전을 따라가게 된다.
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'com.google.code.gson:gson:2.10.1'
+    implementation 'org.junit.jupiter:junit-jupiter:5.8.1' // JUnit5
+    compileOnly 'org.projectlombok:lombok:1.18.24' // lombok
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
 }
 
 test {
     useJUnitPlatform()
 }
-
