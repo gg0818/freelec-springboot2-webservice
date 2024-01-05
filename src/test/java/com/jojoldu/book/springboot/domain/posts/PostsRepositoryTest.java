@@ -17,7 +17,7 @@ public class PostsRepositoryTest {
     @Autowired
     PostsRepository postsRepository;
 
-    @After // ①
+    @After // ① test
     public void cleanup() {
         postsRepository.deleteAll();
     }
