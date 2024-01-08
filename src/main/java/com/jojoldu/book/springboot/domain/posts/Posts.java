@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Getter // ⑥ Lombok의 어노테이션 - 필수X
 @NoArgsConstructor // ⑤ Lombok의 어노테이션 - 필수X
 @Entity // ① JPA의 어노테이션 - 필수
-public class Posts {
+public class Posts extends BaseTimeEntity{
     // Posts 클래스는 실제 DB의 테이블과 매칭될 클래스이다.
     // Entity 클래스라고 한다.
     // DB 데이터에 작업할 경우 실제 쿼리를 날리기보다는, 이 Entity 클래스의 수정을 통해 작업한다.
