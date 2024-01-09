@@ -36,6 +36,7 @@ dependencies {
     implementation 'org.junit.jupiter:junit-jupiter:5.8.1' // JUnit5
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'com.h2database:h2'
+    implementation 'org.springframework.boot:spring-boot-starter-mustache'
     compileOnly 'org.projectlombok:lombok:1.18.24' // lombok
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
