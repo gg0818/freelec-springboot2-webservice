@@ -96,4 +96,29 @@ public class PostApiControllerTest {
 
     }
 
+    @Test
+    public void delete_삭제된다() throws Exception{
+        // given
+        Posts savedPosts = postsRepository.save(Posts.builder()
+                .title("title")
+                .content("content")
+                .author("author")
+                .build());
+
+        Long deleteId = savedPosts.getId();
+        String url = "http://localhost:" + port + "/api/v1/posts/" + deleteId;
+        HttpEntity<Posts> savedEntity = new HttpEntity<>(savedPosts);
+
+        // when
+        ResponseEntity<Long> responseEntity = restTemplate.exchange(url, HttpMethod.DELETE, savedEntity, Long.class);
+        //restTemplate.delete 는 return 값이 없다. 그래서 exchange 사용
+
+        //then
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(responseEntity.getBody()).isGreaterThan(0L);
+
+        List<Posts> deleted = postsRepository.findAll();
+        assertThat(deleted).isEmpty();
+    }
+
 }

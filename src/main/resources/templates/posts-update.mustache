@@ -11,7 +11,7 @@
             </div>
             <div class="form-group">
                 <lable for="title">제목</lable>
-                <input type="text" class="form-control" id="title" value="{{post.title}}" readonly>
+                <input type="text" class="form-control" id="title" value="{{post.title}}" >
             </div>
             <div class="form-group">
                 <lable for="author">작성자</lable>
@@ -22,7 +22,9 @@
                 <textarea class="form-control" id="content">{{post.content}}</textarea>
             </div>
         </form>
-        <a href="/" role="button" class="btn btn-primary" id="btn-update">수정 완료</a>
+        <a href="/" role="button" class="btn btn-secondary">취소</a>
+        <button type="button" class="btn btn-primary" id="btn-update">수정 완료</button>
+        <button type="button" class="btn btn-danger" id="btn-delete">삭제</button>
     </div>
 </div>
 

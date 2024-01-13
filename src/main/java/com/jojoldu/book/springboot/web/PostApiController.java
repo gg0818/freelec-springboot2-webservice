@@ -34,6 +34,17 @@ public class PostApiController {
     }
 
     /**
+     * 삭제
+     * @param id
+     * @return
+     */
+    @DeleteMapping("/api/v1/posts/{id}")
+    public Long delete(@PathVariable Long id) {
+        postsService.delete(id);
+        return id;
+    }
+
+    /**
      * 해당 id 존재하는지 확인
      * @param id
      * @return
@@ -42,6 +53,5 @@ public class PostApiController {
     public PostsResponseDto findById(@PathVariable Long id) {
         return postsService.findById(id);
     }
-
 
 }
