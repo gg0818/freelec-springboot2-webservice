@@ -12,7 +12,6 @@ import java.util.List;
 public class WebConfig implements WebMvcConfigurer {
 
     //loginUserArgumentResolver가 스프링에서 인식 될 수 있도록 WebMvcConfiguer에 추가한다.
-
     private final LoginUserArgumentResolver loginUserArgumentResolver;
 
     @Override
