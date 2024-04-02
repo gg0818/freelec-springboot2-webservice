@@ -1,10 +1,14 @@
 package com.jojoldu.book.springboot;
 
+import com.jojoldu.book.springboot.config.auth.SecurityConfig;
 import com.jojoldu.book.springboot.web.HelloController;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultMatcher;
 
@@ -14,12 +18,17 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest(HelloController.class)
+@WebMvcTest(controllers=HelloController.class,
+    excludeFilters = {
+        @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = SecurityConfig.class)
+    }
+)
 public class HelloControllerTest {
 
     @Autowired
     private MockMvc mvc;
 
+    @WithMockUser(roles = "USER")
     @Test
     @DisplayName("hello 리턴 테스트")
     void hello가_리턴된다() throws Exception {
@@ -29,6 +38,7 @@ public class HelloControllerTest {
                 .andExpect(content().string(hello));
     }
 
+    @WithMockUser(roles = "USER")
     @Test
     @DisplayName("helloDto가 리턴된다")
     void hellowDto가_리턴된다() throws Exception {
