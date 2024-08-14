@@ -42,6 +42,9 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.24' // lombok
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.24' // 테스트 의존성 추가
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.24' // 테스트 의존성 추가
 }
 
 // implementation 'org.springframework.boot:spring-boot-devtools:2.7.4'
